@@ -6,6 +6,8 @@ import { Provider } from "react-redux";
 import configureStore from "./redux/configureStore";
 import { PersistGate } from 'redux-persist/integration/react';
 
+import AppContainer from "./components/AppContainer"
+
 const { persistor, store } = configureStore();
 
 
@@ -28,7 +30,7 @@ class App extends React.Component {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
+            <AppContainer />
           </View>
         </PersistGate>
       </Provider>
