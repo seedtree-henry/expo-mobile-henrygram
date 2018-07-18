@@ -8,7 +8,7 @@
 
 // Initial State
 
-const intialState = {
+const initialState = {
   isLoggedIn: false
 }
 
