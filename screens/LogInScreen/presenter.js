@@ -24,11 +24,21 @@ const LogInScreen = props => (
       />
     </View>
     <View style={styles.content}>
-      <TextInput placeholder="Username" />
-      <TextInput placeholder="Password" />
-      <TouchableOpacity>
-        <View>
-          <Text style={styles.fbText}>Log In</Text>
+      <TextInput
+        placeholder="Username"
+        style={styles.textInput}
+        autoCapitalize={"none"}
+        autoCorrect={false}
+      />
+      <TextInput
+        placeholder="Password"
+        style={styles.textInput}
+        autoCapitalize={"none"}
+        secureTextEntry={true}
+      />
+      <TouchableOpacity style={styles.touchable}>
+        <View style={styles.button}>
+          <Text style={styles.btnText}>Log In</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.fbContainer}>
@@ -75,6 +85,33 @@ const styles = StyleSheet.create({
     color: "#3E99EE",
     marginLeft: 10,
     fontWeight: "600",
+    fontSize: 14
+  },
+  textInput: {
+    height: 50,
+    borderColor: "#bbb",
+    borderWidth: 1,
+    width: width - 80,
+    borderRadius: 5,
+    marginBottom: 15,
+    paddingLeft: 15,
+    paddingHorizontal: 15,
+    backgroundColor: "#FAFAFA"
+  },
+  touchable: {
+    borderRadius: 5,
+    backgroundColor: "#3E99EE",
+    width: width - 80
+  },
+  button: {
+    paddingHorizontal: 7,
+    height: 50,
+    justifyContent: "center"
+  },
+  btnText: {
+    color: "white",
+    fontWeight: "600",
+    textAlign: "center",
     fontSize: 14
   }
 })
