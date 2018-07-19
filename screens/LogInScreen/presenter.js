@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   View,
   Text,
@@ -7,8 +8,9 @@ import {
   Dimensions,
   TouchableOpacity,
   TextInput,
-  StatusBar
-} from "react-native"
+  StatusBar,
+  ActivityIndicator
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
@@ -29,16 +31,27 @@ const LogInScreen = props => (
         style={styles.textInput}
         autoCapitalize={"none"}
         autoCorrect={false}
+        value={props.username}
+        onChangeText={props.changeUsername}
       />
       <TextInput
         placeholder="Password"
         style={styles.textInput}
         autoCapitalize={"none"}
         secureTextEntry={true}
+        value={props.password}
+        onChangeText={props.changePassword}
+        returnKeyType={"send"}
+        // onSubmitEditing : the event when a user clicks the return key (send key in this page)
+        onSubmitEditing={props.submit}
       />
-      <TouchableOpacity style={styles.touchable}>
+      <TouchableOpacity style={styles.touchable} onPressOut={props.submit}>
         <View style={styles.button}>
-          <Text style={styles.btnText}>Log In</Text>
+          {props.isSubmitting ? (
+            <ActivityIndicator size="small" color="white" />
+          ) : (
+            <Text style={styles.btnText}>Log In</Text>
+          )}
         </View>
       </TouchableOpacity>
       <TouchableOpacity style={styles.fbContainer}>
@@ -50,6 +63,15 @@ const LogInScreen = props => (
     </View>
   </View>
 );
+
+LogInScreen.propTypes = {
+  isSubmitting: PropTypes.bool.isRequired,
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  changeUsername: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -114,6 +136,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 14
   }
-})
+});
 
 export default LogInScreen;
