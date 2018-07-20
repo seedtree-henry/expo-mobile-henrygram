@@ -1,30 +1,31 @@
-import React from 'react';
-import { AppLoading, Asset, Font } from 'expo';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { AppLoading, Asset, Font } from "expo";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { StyleSheet, Text, View } from "react-native";
 import { Provider } from "react-redux";
 import configureStore from "./redux/configureStore";
-import { PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from "redux-persist/integration/react";
 
-import AppContainer from "./components/AppContainer"
+import AppContainer from "./components/AppContainer";
 
 const { persistor, store } = configureStore();
-
 
 class App extends React.Component {
   state = {
     isLoadingComplete: false
-  }
+  };
   render() {
     const { isLoadingComplete } = this.state;
     if (!isLoadingComplete) {
-      // AddLoading function takes three props : startAsync, onFinish, onError 
+      // AddLoading function takes three props : startAsync, onFinish, onError
       // https://docs.expo.io/versions/latest/sdk/app-loading
-      return (<AppLoading
-        startAsync={this._loadAssetsAsync}
-        onError={this._handleLoadingError}
-        onFinish={this._handleFinishLoading}
-      />)
+      return (
+        <AppLoading
+          startAsync={this._loadAssetsAsync}
+          onError={this._handleLoadingError}
+          onFinish={this._handleFinishLoading}
+        />
+      );
     }
     return (
       <Provider store={store}>
@@ -56,17 +57,17 @@ class App extends React.Component {
   _handleFinishLoading = async () => {
     this.setState({
       isLoadingComplete: true
-    })
-  }
+    });
+  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     // alignItems: 'center',
-    justifyContent: 'center'
-  },
+    justifyContent: "center"
+  }
 });
 
 export default App;
