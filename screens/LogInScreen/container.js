@@ -28,14 +28,18 @@ class Container extends Component {
   _changePassword = text => {
     this.setState({ password: text });
   };
-  _submit = () => {
+  _submit = async () => {
     const { username, password, isSubmitting } = this.state;
     const { login } = this.props;
     if (!isSubmitting) {
       if (username && password) {
         this.setState({ isSubmitting: true });
         // redux action
-        login(username, password);
+        const loginResult = await login(username, password);
+        if (!loginResult) {
+          Alert.alert("Something went wrong, try again");
+          this.setState({ isSubmitting: false });
+        }
       } else {
         Alert.alert("All fields are required!");
       }
