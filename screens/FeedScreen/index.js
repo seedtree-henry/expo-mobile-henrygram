@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 
 const FeedScreen = props => (
   <View>
-    <Text>Feed</Text>
+    <Text onPress={() => props.navigation.navigate("TakePhoto")}>Feed</Text>
   </View>
 );
 
