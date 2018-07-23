@@ -10,6 +10,7 @@ const HomeRoute = createStackNavigator(
   {
     Home: {
       screen: FeedScreen,
+      // ({navigation }) is equivalent to (props.navigation)
       navigationOptions: ({ navigation }) => ({
         headerTitle: (
           <Image

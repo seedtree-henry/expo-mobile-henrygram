@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 const NavButton = props => (
   <TouchableWithoutFeedback onPressOut={props.onPress}>
-    <View>
+    <View style={styles.container}>
       <Ionicons name={props.iconName} color={"black"} size={30} />
     </View>
   </TouchableWithoutFeedback>
