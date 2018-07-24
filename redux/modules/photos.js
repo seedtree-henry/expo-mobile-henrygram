@@ -1,5 +1,3 @@
-// Import
-
 import { API_URL } from "../../constants";
 import { actionCreators as userActions } from "./user";
 
@@ -18,10 +16,7 @@ function setFeed(feed) {
 }
 
 function setSearch(search) {
-  return {
-    type: SET_SEARCH,
-    search
-  };
+  return { type: SET_SEARCH, search };
 }
 
 // API Actions
@@ -43,7 +38,7 @@ function getFeed() {
           return response.json();
         }
       })
-      .then(json => dispatch(setSearch(json)));
+      .then(json => dispatch(setFeed(json)));
   };
 }
 
@@ -64,7 +59,7 @@ function getSearch() {
           return response.json();
         }
       })
-      .then(json => dispatch(setFeed(json)));
+      .then(json => dispatch(setSearch(json)));
   };
 }
 
@@ -103,7 +98,7 @@ function applySetSearch(state, action) {
   };
 }
 
-//  Export
+// Exports
 
 const actionCreators = {
   getFeed,
@@ -111,6 +106,7 @@ const actionCreators = {
 };
 
 export { actionCreators };
-// Default Export
+
+// Default Reducer Export
 
 export default reducer;
