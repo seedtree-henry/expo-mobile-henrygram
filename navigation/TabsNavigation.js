@@ -5,6 +5,7 @@ import HomeRoute from "../routes/HomeRoute";
 import SearchRoute from "../routes/SearchRoute";
 import NotificationsRoute from "../routes/NotificationsRoute";
 import ProfileRoute from "../routes/ProfileRoute";
+import AddPhotoNavigation from "./AddPhotoNavigation";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -49,6 +50,18 @@ const bottomTabNavigation = createBottomTabNavigator(
         }
       })
     },
+    // AddPhoto: {
+    //   screen: AddPhotoNavigation,
+    //   navigationOptions: ({ navigation }) => ({
+    //     // focused means selected.
+    //     tabBarIcon: ({ focused }) => (
+    //       <Ionicons name={"ios-add-circle-outline"} size={30} color={"black"} />
+    //     )
+    //     // tabBarOnPress: () => {
+    //     //   navigation.navigate("TakePhoto");
+    //     // }
+    //   })
+    // },
     Notifications: {
       screen: NotificationsRoute,
       navigationOptions: {
@@ -80,6 +93,7 @@ const bottomTabNavigation = createBottomTabNavigator(
     // tabBarComponent = ({jumpToIndex, ...props, navigation}) => (
 
     // ),
+
     tabBarOptions: {
       showLabel: false,
       style: {

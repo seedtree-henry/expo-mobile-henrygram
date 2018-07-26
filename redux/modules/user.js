@@ -175,7 +175,7 @@ function applyLogIn(state, action) {
   };
 }
 
-function applyLogOut(state, action) {
+async function applyLogOut(state, action) {
   AsyncStorage.clear();
   return {
     ...state,

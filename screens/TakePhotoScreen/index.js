@@ -1,10 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StatusBar } from "react-native";
+import AddPhotoNavigation from "../../navigation/AddPhotoNavigation";
+import { SafeAreaView } from "react-navigation";
 
 const TakePhotoScreen = props => (
-  <View>
-    <Text>Take Photo</Text>
-  </View>
+  <SafeAreaView style={{ flex: 1 }}>
+    <StatusBar hidden={true} />
+    <AddPhotoNavigation />
+  </SafeAreaView>
 );
 
 export default TakePhotoScreen;
