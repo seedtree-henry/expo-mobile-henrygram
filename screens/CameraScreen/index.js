@@ -153,8 +153,14 @@ class CameraScreen extends Component {
   };
   _approvePhoto = async () => {
     const { picture } = this.state;
-    // save picture to cameraroll and its type is photo.
-    const saveResult = await CameraRoll.saveToCameraRoll(picture, "photo");
+    const {
+      navigation: { navigate }
+    } = this.props;
+    // save picture to cameraroll.
+    const saveResult = await CameraRoll.saveToCameraRoll(
+      picture,
+      navigate("UploadPhoto", { url: picture })
+    );
     this.setState({
       picture: null,
       pictureTaken: false
