@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
-  CameraRoll
+  CameraRoll,
+  StatusBar
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Camera, Permissions } from "expo";
@@ -43,6 +44,7 @@ class CameraScreen extends Component {
     } else {
       return (
         <View style={styles.container}>
+          <StatusBar hidden={true} />
           {pictureTaken ? (
             <View style={{ flex: 2 }}>
               <FitImage source={{ uri: picture }} style={{ flex: 1 }} />
@@ -157,10 +159,8 @@ class CameraScreen extends Component {
       navigation: { navigate }
     } = this.props;
     // save picture to cameraroll.
-    const saveResult = await CameraRoll.saveToCameraRoll(
-      picture,
-      navigate("UploadPhoto", { url: picture })
-    );
+    const saveResult = await CameraRoll.saveToCameraRoll(picture, "photo");
+    navigate("UploadPhoto", { url: picture });
     this.setState({
       picture: null,
       pictureTaken: false

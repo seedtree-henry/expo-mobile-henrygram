@@ -1,3 +1,5 @@
+import React from "react";
+import { Button } from "react-native";
 import { createStackNavigator } from "react-navigation";
 import TakePhotoScreen from "../screens/TakePhotoScreen";
 import TabsNavigation from "./TabsNavigation";
@@ -19,9 +21,13 @@ const RootNavigation = createStackNavigator(
     },
     UploadPhoto: {
       screen: UploadPhotoScreen,
-      navigationOptions: {
-        title: "Upload Photo"
-      }
+      navigationOptions: ({ navigation }) => ({
+        title: "Upload Photo",
+        // .goBack(null) : go back to previous page
+        headerLeft: (
+          <Button title="Cancel" onPress={() => navigation.goBack(null)} />
+        )
+      })
     }
   },
   {

@@ -20,12 +20,12 @@ const LibraryScreen = props => (
     <StatusBar hidden={true} />
     {props.photos && (
       <View style={StyleSheet.pictureContainer}>
-        <TouchableOpacity onPress={props.approvePhoto}>
+        <FitImage source={{ uri: props.pickedPhoto.node.image.uri }} />
+        <TouchableOpacity onPressOut={props.approvePhoto}>
           <View style={styles.action}>
             <MaterialIcons name="check-circle" color="white" size={40} />
           </View>
         </TouchableOpacity>
-        <FitImage source={{ uri: props.pickedPhoto.node.image.uri }} />
       </View>
     )}
     {props.photos && (

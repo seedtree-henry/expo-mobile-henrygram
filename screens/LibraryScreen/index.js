@@ -34,6 +34,7 @@ class Container extends Component {
     });
   };
   _approvePhoto = () => {
+    console.log("hi");
     const {
       navigation: { navigate }
     } = this.props;
